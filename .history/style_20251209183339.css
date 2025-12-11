@@ -1,0 +1,196 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Melhoria 2: Rolagem suave ao clicar nos links do menu */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Fundo com gradiente vibrante e Sticky Footer */
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #ff6ec4, #7873f5);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Barra de navegação fixa */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.6);
+  padding: 10px 0;
+  z-index: 1000;
+  backdrop-filter: blur(5px); /* Adiciona um leve desfoque atrás do menu */
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #00ffe7;
+  font-weight: bold;
+  transition: color 0.3s;
+  text-transform: uppercase; /* Deixa os links em caixa alta para mais destaque */
+  font-size: 0.9rem;
+}
+
+.navbar a:hover {
+  color: #ff6ec4;
+}
+
+/* Cabeçalho */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 120px 20px 30px; /* Aumentei um pouco o padding superior */
+  max-width: 1200px; /* Limita a largura em telas muito grandes */
+  margin: 0 auto; /* Centraliza se a tela for muito grande */
+  width: 100%;
+}
+
+.logo {
+  width: 80px;
+  height: auto; /* Garante a proporção */
+}
+
+.icon {
+  width: 50px;
+  height: auto;
+}
+
+/* Título neon com animação */
+.neon-title {
+  font-size: 2.5rem;
+  text-align: center; /* Garante que o texto centralize se quebrar linha */
+  color: #fff;
+  text-shadow: 0 0 5px #00ffe7, 0 0 10px #00ffe7, 0 0 20px #00ffe7;
+  animation: flicker 2s infinite alternate;
+}
+
+@keyframes flicker {
+  0% { opacity: 1; text-shadow: 0 0 5px #00ffe7, 0 0 10px #00ffe7; }
+  50% { opacity: 0.8; text-shadow: 0 0 20px #00ffe7, 0 0 30px #00ffe7; }
+  100% { opacity: 1; text-shadow: 0 0 10px #00ffe7, 0 0 20px #00ffe7; }
+}
+
+/* Galeria responsiva */
+.gallery {
+  display: grid;
+  /* Ajustei o minmax para 200px para as imagens ficarem um pouco maiores */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Melhoria 3: Padronização das imagens da galeria */
+.gallery img {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Força a imagem a ser quadrada */
+  object-fit: cover; /* Corta a imagem para preencher o quadrado sem distorcer */
+  border-radius: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Sombra suave */
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 255, 231, 0.4); /* Sombra neon ao passar o mouse */
+}
+
+/* Botões animados */
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Permite que os botões quebrem linha em telas pequenas */
+  gap: 20px;
+  margin: 40px 20px;
+}
+
+button {
+  background: #00ffe7;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 255, 231, 0.3);
+}
+
+button:hover {
+  transform: translateY(-5px);
+  background: #ff6ec4;
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(255, 110, 196, 0.5);
+}
+
+/* Rodapé */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0,0,0,0.5);
+  margin-top: auto; /* Mantém o rodapé no final */
+  backdrop-filter: blur(5px);
+}
+
+.social-icons {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.social-icons img {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s;
+  filter: drop-shadow(0 0 5px #00ffe7); /* Adiciona brilho neon aos ícones */
+}
+
+.social-icons img:hover {
+  transform: scale(1.2) rotate(10deg); /* Pequena rotação ao passar o mouse */
+}
+
+/* Melhoria 4: Media Query para telas pequenas (Celulares) */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 100px;
+  }
+
+  .neon-title {
+    font-size: 2rem;
+    order: 2; /* Título fica no meio */
+  }
+  
+  .logo { order: 1; } /* Logo fica em cima */
+  .icon { order: 3; } /* Ícone fica embaixo */
+
+  .navbar ul {
+    gap: 15px; /* Menos espaço entre links no mobile */
+  }
+  
+  .navbar a {
+      font-size: 0.8rem;
+  }
+}

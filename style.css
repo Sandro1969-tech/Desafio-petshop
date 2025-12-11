@@ -1,0 +1,371 @@
+/* Variáveis de Cores */
+:root {
+    --primary-color: #00FFFF; /* Ciano Neon */
+    --secondary-color: #FF00FF; /* Magenta Neon */
+    --accent-color: #FFFF00; /* Amarelo Neon */
+    --background-color: #121212; /* Fundo Escuro Quase Preto */
+    --text-color: #E0E0E0; /* Texto Cinza Claro */
+}
+
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+/* ------------------ */
+/* Cabeçalho e Título */
+/* ------------------ */
+
+header {
+    background-color: #1F1F1F;
+    padding: 40px 20px;
+    text-align: center;
+    border-bottom: 3px solid var(--primary-color);
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+}
+
+.logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 5px solid var(--secondary-color);
+    box-shadow: 0 0 15px var(--secondary-color);
+}
+
+.neon-title {
+    font-size: 3em;
+    color: #FFFFFF; /* Cor base para o texto */
+    text-shadow:
+        0 0 7px var(--primary-color),
+        0 0 10px var(--primary-color),
+        0 0 21px var(--primary-color),
+        0 0 42px var(--secondary-color),
+        0 0 82px var(--secondary-color),
+        0 0 92px var(--secondary-color),
+        0 0 102px var(--secondary-color),
+        0 0 151px var(--secondary-color);
+    margin-bottom: 10px;
+    animation: pulse 1.5s infinite alternate; /* Animação de pulsar */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.02);
+    }
+}
+
+header p {
+    color: var(--text-color);
+    font-size: 1.2em;
+    margin-top: 5px;
+}
+
+/* ------------------ */
+/* Navegação e Busca */
+/* ------------------ */
+
+.navbar {
+    background-color: #242424;
+    padding: 15px 20px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Garante responsividade básica */
+}
+
+.navbar li {
+    margin: 0 15px;
+}
+
+.navbar a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 8px 15px;
+    display: block;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar a:hover {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    text-shadow: 0 0 5px var(--background-color);
+}
+
+/* Estilo para a busca */
+form {
+    display: flex;
+    justify-content: center;
+    padding: 15px 20px;
+    background-color: #2a2a2a;
+    border-bottom: 1px solid #333;
+}
+
+form input[type="text"] {
+    padding: 10px;
+    border: 2px solid var(--accent-color);
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    background-color: #333;
+    color: var(--text-color);
+    width: 250px;
+    max-width: 70%;
+}
+
+form button {
+    padding: 10px 15px;
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+form button:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* ------------------ */
+/* Galeria (BLOCO CORRIGIDO) */
+/* ------------------ */
+
+main {
+    padding: 20px;
+}
+
+/* Regra do Contêiner da Galeria */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 40px 0;
+    margin-bottom: 40px;
+    border-bottom: 1px dashed var(--secondary-color);
+}
+
+/* Regra das Imagens: Correção para evitar corte de cabeça */
+.gallery img {
+    width: 100%;
+    height: 250px; /* Altura ajustada para melhor enquadramento */
+    
+    /* Usar 'cover' para preencher o espaço (sem bordas vazias) */
+    object-fit: cover; 
+    
+    /* FOCA NO TOPO: Garante que a parte superior (cabeça) da imagem seja visível */
+    object-position: top; 
+    
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.4);
+    transition: transform 0.4s ease-in-out;
+}
+
+img {
+  display: block;          /* evita espaços indesejados */
+  margin: 0 auto;          /* centraliza horizontalmente */
+  max-width: 100%;         /* garante responsividade */
+  height: auto;            /* mantém proporção */
+  vertical-align: middle;  /* corrige desalinhamento vertical */
+}.gallery img:hover {
+    transform: scale(1.05) rotate(1deg); /* Efeito de zoom sutil e rotação */
+    box-shadow: 0 0 25px var(--accent-color);
+}
+
+.gallery p {
+    text-align: center;
+    font-style: italic;
+    color: var(--accent-color);
+    padding-top: 5px;
+    grid-column: span 1; /* Garante que o parágrafo ocupe uma coluna */
+}
+
+/* Corrigindo o layout para a descrição seguir a imagem */
+.gallery > img:nth-child(even) + p,
+.gallery > img:nth-child(odd) + p {
+    margin-top: -10px; /* Ajuste fino */
+    margin-bottom: 20px;
+}
+
+
+/* ------------------ */
+/* Botões (Serviços) */
+/* ------------------ */
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    text-decoration: none;
+    font-size: 1.3em;
+    font-weight: bold;
+    padding: 15px 30px;
+    border-radius: 50px; /* Botões arredondados */
+    color: var(--background-color);
+    background-color: var(--primary-color);
+    box-shadow: 0 0 10px var(--primary-color), 0 0 20px rgba(0, 255, 255, 0.5);
+    transition: background-color 0.4s, transform 0.4s, box-shadow 0.4s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid transparent;
+}
+
+.btn:hover {
+    /* 1. Muda de Cor */
+    background-color: var(--secondary-color);
+    /* 2. Move-se */
+    transform: translateY(-5px) scale(1.05);
+    /* 3. Novo Efeito Neon (Vibrante) */
+    box-shadow: 0 0 15px var(--secondary-color), 0 5px 25px var(--secondary-color), 0 10px 40px rgba(255, 0, 255, 0.7);
+    color: #FFFFFF;
+    border-color: var(--accent-color);
+}
+
+/* ------------------ */
+/* Rodapé (BLOCO COMPLETO E CENTRALIZADO) */
+/* ------------------ */
+
+footer {
+    background-color: #1F1F1F; 
+    text-align: center;
+    padding: 25px 20px;
+    border-top: 3px solid var(--secondary-color); 
+    margin-top: 20px;
+}
+
+footer p {
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    color: #999; 
+}
+
+.social-icons {
+    /* Garante que o bloco de ícones seja centralizado */
+    display: inline-block; 
+    margin-top: 10px;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin: 0 10px;
+    transition: transform 0.3s;
+}
+
+.social-icons img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    transition: box-shadow 0.3s;
+}
+
+.social-icons a:hover {
+    transform: translateY(-5px); /* Efeito de "subida" */
+}
+
+.social-icons a:hover img {
+    box-shadow: 0 0 12px var(--accent-color);
+}
+
+
+/* ------------------ */
+/* Responsividade (Media Queries) */
+/* ------------------ */
+
+/* Telas Pequenas (Smartphones) */
+@media (max-width: 600px) {
+    .neon-title {
+        font-size: 2em;
+    }
+
+    header {
+        padding: 30px 10px;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .navbar li {
+        margin: 5px 0;
+    }
+
+    .navbar a {
+        padding: 10px;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr; /* Uma coluna em telas muito pequenas */
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btn {
+        width: 100%; /* Botões ocupam a largura total */
+        font-size: 1.1em;
+    }
+    
+    form {
+        flex-wrap: wrap;
+    }
+
+    form input[type="text"] {
+        width: calc(100% - 70px); /* Ajusta a largura para caber o botão */
+        max-width: none;
+    }
+
+    form button {
+        width: 70px;
+    }
+}
+
+/* Telas Médias (Tablets) */
+@media (min-width: 601px) and (max-width: 900px) {
+    .neon-title {
+        font-size: 2.5em;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr); /* Duas colunas em tablets */
+    }
+}
+
+p {
+  color: yellow;
+  background-color: rgb(26, 24, 24);
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
